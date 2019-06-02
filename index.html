@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Calculadora con jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="Principal">
+          <h1>To Do List</h1>
+    </div>
+ <br>
+    <div class="Secundario">
+      <input type="text" id="addtodolist" placeholder="Enter Task">
+      <button id="addtask">Add Task</button>
+    </div>
+      <ul id="todolist"> 
+
+      </ul>
+    
+    <div class="Terciario">
+      <button id="deletetask">Delete all tasks</button>
+    </div>
+  </body>
+
+  <script>
+    $(document).ready(function(){
+      $("#addtask").click(function(){
+        var newListItem = $("#addtodolist").val();
+        if (newListItem.length>0) {
+          $("#todolist").append("<li>" + newListItem +"  <button class='deleteitem'>Delete</button> <br></br></li>")
+          $("#addtodolist").val('');
+          $("#deletetask").click(function(){
+            $("li").remove();
+              });
+          $(".deleteitem").click(function(){
+            $(this).parent().remove()
+          })
+
+        }
+      });
+    });
+  </script>
+</html>
